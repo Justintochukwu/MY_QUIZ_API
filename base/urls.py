@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse   # 👈 import HttpResponse
-from .views import welcome
 
+def welcome(request):                  # 👈 define the view
+    return HttpResponse("<h1>Welcome to My Quiz API 🚀</h1><p>Go to <a href='/quiz/'>/quiz/</a> for endpoints.</p>")
 
 urlpatterns = [
     path('', welcome, name="welcome"), 
