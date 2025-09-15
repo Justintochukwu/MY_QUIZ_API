@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse   # 👈 import HttpResponse
+from .views import welcome
+
 
 urlpatterns = [
+    path('', welcome, name="welcome"), 
     path('admin/', admin.site.urls),
-    path('quiz/', include('quiz.urls', namespace='quiz')),
+    path('quiz/', include(('quiz.urls', 'quiz'), namespace='quiz')), 
 ]
